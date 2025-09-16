@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan Indah Kita 💕</title>
+  <meta name="description" content="Website kenangan penuh cinta berisi surat, galeri foto, dan momen spesial kita.">
+  <link rel="icon" href="images/861gk9gqka0c1.png" type="image/png">
+
+  <!-- Tailwind & Font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- SwiperJS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff5f7;
+      color: #4a1d42;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    body.loaded { opacity: 1; }
+    .dancing-script { font-family: 'Dancing Script', cursive; }
+    .heart-animation { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .quote-box {
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .quote-box:hover { transform: scale(1.02); }
+
+    /* bikin slide & lightbox persegi */
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .lightbox-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Music Player -->
+  <div class="fixed bottom-4 right-4 z-50">
+    <button id="musicBtn" class="bg-pink-500 text-white p-3 rounded-full shadow-lg hover:bg-pink-600 transition-all">
+      <i class="fas fa-music"></i>
+    </button>
+    <audio id="bgMusic" loop>
+      <source src="images/komang.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="fixed w-full top-0 left-0 text-white shadow-lg z-50 bg-pink-700 bg-opacity-60">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="text-2xl font-bold dancing-script">💕 Kenangan Kita</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#top" class="hover:text-pink-200 transition">Beranda</a>
+        <a href="#surat" class="hover:text-pink-200 transition">Surat</a>
+        <a href="#galeri" class="hover:text-pink-200 transition">Kenangan</a>
+        <a href="#quotes" class="hover:text-pink-200 transition">Quotes</a>
+        <a href="wa.html" class="bg-white text-pink-600 px-3 py-1 rounded-full hover:bg-pink-100 transition">💌 Kejutan</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden flex-col bg-pink-900 text-white px-6 py-4 space-y-3 md:hidden">
+      <a href="#top" class="hover:text-pink-200">Beranda</a>
+      <a href="#surat" class="hover:text-pink-200">Surat</a>
+      <a href="#galeri" class="hover:text-pink-200">Kenangan</a>
+      <a href="#quotes" class="hover:text-pink-200">Quotes</a>
+      <a href="wa.html" class="bg-white text-pink-600 px-3 py-1 rounded-full hover:bg-pink-100 transition">💌 Kejutan</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="images/header.png" alt="foto utama" class="w-full h-full object-cover opacity-90" loading="lazy"/>
+    </div>
+    <div class="relative z-10 text-center px-4 py-20 text-white">
+      <h1 class="text-4xl md:text-6xl font-bold dancing-script mb-4 heart-animation">HAPPY BIRTHDAY 🥳</h1>
+      <p class="text-xl md:text-2xl mb-6"> Semoga hidupmu selalu penuh tawa, kebahagiaan, dan </p>
+      <p class="text-xl md:text-2xl mb-6"> kesuksesan. Thank you for always being there!  </p>
+      <a href="#surat" class="bg-white text-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-100 transition-all shadow-lg">
+        <i class="fas fa-heart mr-2"></i> Scroll Kebawah
+      </a>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-white text-2xl"></i>
+    </div>
+  </section>
+
+  <!-- Love Letter -->
+  <section id="surat" class="py-20 px-4 md:px-10">
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Surat Untukmu 💌</h2>
+        <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+      </div>
+      <div class="prose max-w-none leading-relaxed">
+        <p class="text-lg mb-4">Aku tak pernah menyangka, bahwa kebahagiaan bisa sesederhana saat aku bersamamu.</p>
+        <p class="mb-4">Setiap senyummu, setiap kata darimu, adalah cahaya kecil yang selalu menenangkan hatiku.</p>
+        <p class="mb-4">Terima kasih sudah menjadi bagian terindah dalam hidupku.</p>
+        <p class="text-xl dancing-script text-pink-600 mb-6">Aku sayang kamu selalu 💕</p>
+        <p class="text-right dancing-script mt-8 text-2xl">Untukmu,<br><span class="font-bold">[Gantengmu 🥴]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memory Gallery -->
+  <section id="galeri" class="py-20 px-4 bg-pink-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Kenangan Kita 📸</h2>
+        <p class="text-gray-600 mt-2">Momen-momen berharga yang tak akan pernah terlupa</p>
+        <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+      </div>
+
+      <!-- Swiper -->
+      <div class="swiper mySwiper max-w-3xl mx-auto">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="images/1755398820960-02.jpeg" alt="foto 1" class="gallery-img"/></div>
+          <div class="swiper-slide"><img src="images/1754828720978.jpg" alt="foto 2" class="gallery-img"/></div>
+          <div class="swiper-slide"><img src="images/IMG-20250412-WA0020.jpg" alt="foto 3" class="gallery-img"/></div>
+          <div class="swiper-slide"><img src="images/IMG-20250326-WA0016.jpg" alt="foto 4" class="gallery-img"/></div>
+          <div class="swiper-slide"><img src="images/IMG-20250304-WA0077.jpg" alt="foto 5" class="gallery-img"/></div>
+          <div class="swiper-slide"><img src="images/IMG-20250608-WA0025-01.jpeg" alt="foto 6" class="gallery-img"/></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next text-pink-600"></div>
+        <div class="swiper-button-prev text-pink-600"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <button id="closeLightbox" class="absolute top-6 right-6 text-white text-3xl">&times;</button>
+    <div class="swiper myLightboxSwiper max-w-md w-full">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/1755398820960-02.jpeg" alt="foto 1" class="lightbox-img"/></div>
+        <div class="swiper-slide"><img src="images/1754828720978.jpg" alt="foto 2" class="lightbox-img"/></div>
+        <div class="swiper-slide"><img src="images/IMG-20250412-WA0020.jpg" alt="foto 3" class="lightbox-img"/></div>
+        <div class="swiper-slide"><img src="images/IMG-20250326-WA0016.jpg" alt="foto 4" class="lightbox-img"/></div>
+        <div class="swiper-slide"><img src="images/IMG-20250304-WA0077.jpg" alt="foto 5" class="lightbox-img"/></div>
+        <div class="swiper-slide"><img src="images/IMG-20250608-WA0025-01.jpeg" alt="foto 6" class="lightbox-img"/></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next text-white"></div>
+      <div class="swiper-button-prev text-white"></div>
+    </div>
+  </div>
+
+  <!-- Quotes -->
+  <section id="quotes" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold dancing-script text-pink-600">Quotes Cinta ✨</h2>
+        <div class="w-24 h-1 bg-pink-300 mx-auto mt-4"></div>
+      </div>
+      <div class="space-y-8">
+        <div class="bg-white p-6 rounded-xl shadow-md quote-box">
+          <div class="absolute -top-3 -left-3 text-pink-400 text-4xl"><i class="fas fa-quote-left"></i></div>
+          <p class="text-lg italic pl-8">Cinta itu sederhana, hadirmu sudah cukup jadi alasanku bahagia.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md quote-box">
+          <div class="absolute -top-3 -left-3 text-pink-400 text-4xl"><i class="fas fa-quote-left"></i></div>
+          <p class="text-lg italic pl-8">Kamu adalah rumah, tempat aku selalu ingin pulang.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md quote-box">
+          <div class="absolute -top-3 -left-3 text-pink-400 text-4xl"><i class="fas fa-quote-left"></i></div>
+          <p class="text-lg italic pl-8">Setiap detik bersamamu adalah kenangan yang abadi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-900 text-white py-12 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl dancing-script mb-4">Selamanya Untukmu</h3>
+      <p class="mb-2">Dibuat dengan sepenuh hati dan segenap cinta 💖</p>
+      <p class="text-sm text-pink-300">© 2025 Kenangan Kita. Semua hak cinta dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- SwiperJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Music Player
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+      } else {
+        bgMusic.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Fade-in effect
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Swiper main gallery
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      autoplay: { delay: 2500 },
+    });
+
+    // Swiper lightbox
+    const lightboxSwiper = new Swiper(".myLightboxSwiper", {
+      loop: true,
+      pagination: { el: ".myLightboxSwiper .swiper-pagination", clickable: true },
+      navigation: { 
+        nextEl: ".myLightboxSwiper .swiper-button-next", 
+        prevEl: ".myLightboxSwiper .swiper-button-prev" 
+      }
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const closeLightbox = document.getElementById("closeLightbox");
+    const galleryImgs = document.querySelectorAll(".gallery-img");
+
+    // buka lightbox
+    galleryImgs.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        lightbox.classList.remove("hidden");
+        lightboxSwiper.slideToLoop(index, 0);
+      });
+    });
+
+    // tutup lightbox
+    closeLightbox.addEventListener("click", () => {
+      lightbox.classList.add("hidden");
+    });
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.classList.add("hidden");
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") lightbox.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>
